@@ -269,13 +269,17 @@ class Model {
 	 */
 	public function __construct($params = null, $new_record = true, $is_modified = false)
 	{
+	    
 		$this->class_name = get_class($this);
 
 		// Setup all the associations
 		foreach ($this->assoc_types as $type)
 		{
+		    
+
 			if (isset($this->{$type}))
 			{
+			    
 				$class_name = 'ActiveRecord\\'.Inflector::classify($type);
 
 				foreach ($this->{$type} as $assoc)
@@ -301,9 +305,11 @@ class Model {
 
 		if (empty($this->columns))
 		{
-			$this->columns = array_keys(Database::instance()->list_columns($this->table_name));
+			$this->columns = array_keys(\Database::instance()->list_columns($this->table_name));
 		}
 
+		echo 'Belenenses<br />';
+		
 		if (is_array($params))
 		{
 			foreach ($params as $key => $value)
