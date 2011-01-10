@@ -87,26 +87,7 @@ class Controller_Owl extends Controller_Template {
 
 	$this->template->content = View::factory('owl/dashboard');
     }
-    public function action_content($action = null)
-    {
-	Worker::is_logged();
-
-	if($action)
-	{
-	    Content::$action();
-	}
-	else
-	{
-	    $data = array();
-	    $this->template->title = 'OWL - Gestão de conteúdo';
-	    $data['user'] = Worker::get_my_profile();
-	    $this->template->user = $data['user'];
-	    $this->template->content = View::factory('owl/content',$data);
-	}
-    }
-
-
-
+    
 
     // ----------------------------------------------------------------------------------------------------------
     //  Other Functions
