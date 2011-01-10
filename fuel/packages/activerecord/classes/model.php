@@ -305,7 +305,7 @@ class Model {
 
 		if (empty($this->columns))
 		{
-			$this->columns = array_keys(\Database::instance()->list_columns($this->table_name));
+			$this->columns = array_keys(\Fuel\Core\Database::instance()->list_columns($this->table_name));
 		}
 
 		echo 'Belenenses<br />';
