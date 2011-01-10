@@ -33,6 +33,8 @@ class Controller_Admin_Content extends Controller_Template
 	$this->template->user = Worker::get_my_profile();
 	$data['user'] = $this->template->user;
 
+	Worker::add_js('areas.js');
+
 	$data['areas'] = Model_Area::find('all');
 	$this->template->content = View::factory('owl/content/areas',$data);
     }
@@ -66,9 +68,43 @@ class Controller_Admin_Content extends Controller_Template
 	$this->template->content = View::factory('owl/content/addarea',$data);
     }
 
-    public function action_deletearea()
+    public function action_addarea()
     {
-	
+	Worker::is_logged();
+
+	$data = array();
+
+	if($_POST)
+	{
+	    $data['name'] = Input::post('name');
+	    $data['description'] = Input::post('description');
+
+	    DB::insert('areas',array('name','description'))
+		    ->values(array($data['name'],$data['description']))
+		    ->execute();
+
+	    Output::redirect('admin/content/areas','refresh');
+	}
+
+	$this->template->title = 'OWL - Adicionar Área';
+
+	$this->template->user = Worker::get_my_profile();
+	$data['user'] = $this->template->user;
+	$this->template->content = View::factory('owl/content/addarea',$data);
+    }
+
+    public function action_deletearea($id = null)
+    {
+	if( ! $id )
+	{
+	    echo 0;
+	    return;
+	}
+
+	DB::delete('areas')->where('id','=',$id);
+
+	return 1;
+
     }
 
     public function action_categories()
@@ -96,29 +132,6 @@ class Controller_Admin_Content extends Controller_Template
 
     }
 
-    public function action_addarea()
-    {
-	Worker::is_logged();
-
-	$data = array();
-
-	if($_POST)
-	{
-	    $data['name'] = Input::post('name');
-	    $data['description'] = Input::post('description');
-
-	    DB::insert('areas',array('name','description'))
-		    ->values(array($data['name'],$data['description']))
-		    ->execute();
-
-	    Output::redirect('admin/content/areas','refresh');
-	}
-	
-	$this->template->title = 'OWL - Adicionar Área';
-
-	$this->template->user = Worker::get_my_profile();
-	$data['user'] = $this->template->user;
-	$this->template->content = View::factory('owl/content/addarea',$data);
-    }
+    
 
 }
