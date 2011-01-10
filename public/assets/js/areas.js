@@ -1,4 +1,4 @@
-function confirm_area_delete(id)
+function area_delete(id)
 {
 	if(confirm('Tem a certeza que deseja de apagar a área com o id '+id))
 	{
