@@ -6,7 +6,7 @@ class Worker
     {
 	$logged = Session::get('username');
 	if($logged) return true;
-	return false;
+	Output::redirect('owl/login','refresh');
     }
 
     public function get_my_profile()
