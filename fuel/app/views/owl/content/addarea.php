@@ -1,14 +1,11 @@
 <h1>Adicionar Área</h1>
+
 <?php
-if(isset($action) && $action == 'e')
-{
-    echo Form::open('owl/content/editarea/'.$area['id']);
-}
-else
-{
-    echo Form::open('owl/content/addarea');
-}
+    $formaction = 'owl/content/addarea';
+    if(isset($action) && $action == 'e') $formaction .= '/'.$area['id'];
+    echo Form::open($formaction);
 ?>
+
 <table>
     <tr>
 	<td>Nome</td>

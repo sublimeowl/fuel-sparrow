@@ -37,10 +37,8 @@ class Content
 	    Output::redirect('owl/content/areas','refresh');
 	}
 
-	// $r = DB::select()->from('areas')->where('id','=',$id)->execute();
-	// $data['area'] = $r[0];
-
-	$data['area'] = Model_Area::find($id);
+	$r = DB::select()->from('areas')->where('id','=',$id)->execute();
+	$data['area'] = $r[0];
 
 	$data['action'] = 'e';
 	
@@ -48,6 +46,9 @@ class Content
 
 	$this->template->user = Worker::get_my_profile();
 	$data['user'] = $this->template->user;
+
+	Worker::add_rte_textarea();
+	
 	$this->template->content = View::factory('owl/content/addarea',$data);
     }
 

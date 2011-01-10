@@ -11,6 +11,8 @@
     <?= Asset::css('960.css') ?>
     <?= Asset::css('main.css') ?>
 
+    <?php Worker::plot_css(); ?>
+
     <title><?= isset ($title)?$title:'OWL' ?></title>
 
 </head>
