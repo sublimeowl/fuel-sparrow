@@ -1,8 +1,9 @@
 <h1>Adicionar Área</h1>
 
 <?php
-    $formaction = 'owl/content/addarea';
-    if(isset($action) && $action == 'e') $formaction .= '/'.$area['id'];
+    $formaction = 'owl/content/';
+    if(isset($action) && $action == 'e') {$formaction .= 'editarea/'.$area['id'];}
+    else { $formaction .= 'addarea/'.$area['id']; }
     echo Form::open($formaction);
 ?>
 

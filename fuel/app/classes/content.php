@@ -42,7 +42,7 @@ class Content
 
 	$data['action'] = 'e';
 	
-	$this->template->title = 'OWL - Esitar área '.$data['area']['name'];
+	$this->template->title = 'OWL - Esitar área "'.$data['area']['name'].'"';
 
 	$this->template->user = Worker::get_my_profile();
 	$data['user'] = $this->template->user;
@@ -52,6 +52,10 @@ class Content
 	$this->template->content = View::factory('owl/content/addarea',$data);
     }
 
+    public function deletearea()
+    {
+	
+    }
 
     public function categories()
     {

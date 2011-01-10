@@ -13,7 +13,7 @@
 
 <table>
     <tr>
-	<th>Id</th><th>Nome</th><th>Artigos</th><th>Acções</th>
+	<th>Id</th><th>Nome</th><th>Descrição</th><th>Artigos</th><th>Acções</th>
    </tr>
 	<?php
 	foreach($areas as $area)
@@ -22,8 +22,14 @@
     <tr>
 	<td><?= $area['id'] ?></td>
 	<td><?= $area['name'] ?></td>
+	<td><?= $area['description'] ?></td>
 	<td>0</td>
-	<td><?= Html::anchor('owl/content/editarea/'.$area['id'], 'Editar') ?> | Apagar</td>
+	<td>
+	    <?= Html::anchor('owl/content/editarea/'.$area['id'], 'Editar') ?>
+	    &nbsp;|&nbsp;
+	    <a href="javascript:void(0);" onclick="javascript:confirm_area_delete(<?= $area['id'] ?>);" />
+
+	</td>
     </tr>
 	    <?php
 	}

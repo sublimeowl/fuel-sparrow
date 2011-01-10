@@ -56,6 +56,7 @@ class Worker
 
     public function plot_js()
     {
+	echo '<script type="text/javascript" >var url="'.Uri::create('/').'";</script>'."\n";
 	foreach(Worker::$jsfiles as $file) echo Asset::js($file);
     }
 
