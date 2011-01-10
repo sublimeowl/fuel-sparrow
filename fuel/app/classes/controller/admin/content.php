@@ -37,7 +37,7 @@ class Controller_Admin_Content extends Controller_Template
 	$this->template->content = View::factory('owl/content/areas',$data);
     }
 
-    public function editarea()
+    public function action_editarea()
     {
 	$id = Uri::segment(4);
 	if(!$id) Output::redirect('admin/content/areas','refresh');
@@ -66,12 +66,12 @@ class Controller_Admin_Content extends Controller_Template
 	$this->template->content = View::factory('owl/content/addarea',$data);
     }
 
-    public function deletearea()
+    public function action_deletearea()
     {
 	
     }
 
-    public function categories()
+    public function action_categories()
     {
 	Worker::is_logged();
 
@@ -83,7 +83,7 @@ class Controller_Admin_Content extends Controller_Template
 	$this->template->content = View::factory('admin/content/categories',$data);
     }
 
-    public function add()
+    public function action_add()
     {
 	Worker::is_logged();
 	
@@ -96,7 +96,7 @@ class Controller_Admin_Content extends Controller_Template
 
     }
 
-    public function addarea()
+    public function action_addarea()
     {
 	Worker::is_logged();
 

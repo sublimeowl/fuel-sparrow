@@ -20,14 +20,14 @@
 	{
 	    ?>
     <tr>
-	<td><?= $area['id'] ?></td>
-	<td><?= $area['name'] ?></td>
-	<td><?= $area['description'] ?></td>
+	<td><?= $area->id ?></td>
+	<td><?= $area->name ?></td>
+	<td><?= $area->description ?></td>
 	<td>0</td>
 	<td>
-	    <?= Html::anchor('owl/content/editarea/'.$area['id'], 'Editar') ?>
+	    <?= Html::anchor('owl/content/editarea/'.$area->id, 'Editar') ?>
 	    &nbsp;|&nbsp;
-	    <a href="javascript:void(0);" onclick="javascript:confirm_area_delete(<?= $area['id'] ?>);" />
+	    <?= Html::anchor('javascript:void(0);','Apagar',array('onclick'=>'javascript:deletearea('.$area->id.');')) ?>
 
 	</td>
     </tr>

@@ -307,8 +307,6 @@ class Model {
 		{
 			$this->columns = array_keys(\Fuel\Core\Database::instance()->list_columns($this->table_name));
 		}
-
-		echo 'Belenenses<br />';
 		
 		if (is_array($params))
 		{
